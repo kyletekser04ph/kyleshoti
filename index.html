@@ -52,15 +52,32 @@
 		 animation: neon-border 2s linear infinite alternate; 
 		}
 
-		 @keyframes neon-blue-text {
-    color: white;
-    text-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #00f, 0 0 40px #00f, 0 0 50px #00f, 0 0 60px #00f, 0 0 70px #00f;
+		 @keyframes changeColor {
+				0% {
+						color: white;
+				}
+				16.66% {
+						color: white;
+				}
+				33.33% {
+						color: white;
+				}
+				50% {
+						color: black;
+				}
+				66.66% {
+						color: black;
+				}
+				83.33% {
+						color: white;
+				}
+				100% {
+						color: white;
+				}
 	 }
-		 }
-
 		#apiResponse {
 		 background-color: #0000;
-		 color: #fff;
+		 color: #4e54c8;
 		}
 
 		#next-button,
@@ -69,7 +86,7 @@
 		 bottom: 20px;
 		 padding: 20px 40px;
 		 font-size: 18px;
-		 background-color: #190096;
+		 background-color: #c1c0f4;
 		 color: #e5e5e5;
 		 border: none;
 		 border-radius: 10px;
@@ -100,7 +117,7 @@
 		 transform: translateX(-50%);
 		 z-index: 999;
 		 font-size: 24px;
-		 color: #fff;
+		 color: #4e54c8;
 		 animation: changeColor 5s infinite;
 		}
 
@@ -135,9 +152,6 @@
 		<div id="video-container">
 				<video id="video" controls autoplay></video>
 		</div>
-<footer>
-        &copy; 2024 | Kyle Bait-it | All rights reserved.
-    </footer>
 
 		<button id="next-button">𝗡𝗘𝗫𝗧 𝗩𝗜𝗗𝗘𝗢 (◍•ᴗ•◍)</button>
 		<button id="auto-bot-button" onclick="window.open('https://www.facebook.com/kyledev03', '_blank')">𝗙𝗕</button>
@@ -168,3 +182,6 @@
 		</script>
 </body>
 </html>
+<footer>
+        &copy; 2024 | Kylepogi | All rights reserved.
+    </footer>
