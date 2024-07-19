@@ -3,119 +3,170 @@
 <head>
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Random-Shoti</title>
+ <title>𝗥𝗔𝗡𝗗𝗢𝗠-𝗖𝗛𝗜𝗫𝗫𝗩𝟮</title>
  <style>
-    html, body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(to bottom right, #141E30, #243B55);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+		html,
+		body   {
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-image: url("https://i.imgur.com/2R6iXQB.gif");
+				background-size: cover;
+		}
 
-    #video-container {
-        width: 75%;
-        height: 80vh;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 15px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(10px);
-    }
+		video {
+				width: 100%;
+				height: 90%; 
+				object-fit: cover;
+		}
 
-    #video {
-        width: 100%;
-        height: 60%;
-        border-radius: 10px;
-        object-fit: cover;
-        border: 3px solid #fff;
-        margin-bottom: 20px;
-    }
+		.bg {
+				position: absolute;
+				top: 20px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 100%;
+				text-align: center;
+				z-index: 999;
+		}
 
-    #next-button, #fb-button {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #007ACC;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        margin: 10px;
-        width: 140px;
-        text-align: center;
-    }
+		#video-container {
+				width: 80%;
+				height: 85vh;
+				margin-top: 40px;
+				position: relative;
+		}
 
-    #next-button:hover, #fb-button:hover {
-        background-color: #005999;
-    }
+		#video {
+		 width: 100%;
+		 border-radius: 10px;
+		 height: 80%;
+		 object-fit: cover;
+		 margin: auto;
+		 border: 2px solid transparent;
+		 animation: neon-border 2s linear infinite alternate; 
+		}
 
-    #title {
-        font-size: 24px;
-        color: #fff;
-        margin-bottom: 20px;
-    }
+		 @keyframes neon-border {
+				 from {
+				border-color: #ff0000;
+				box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000; 
+				 }
+				 to {
+				border-color: #00ff00;
+				box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00, 0 0 60px #00ff00;
+				 }
+		 }
 
-    #fb-button img {
-        margin-right: 8px;
-    }
+		#apiResponse {
+		 background-color: #0000;
+		 color: #fff;
+		}
 
-    footer {
-        text-align: center;
-        color: #fff;
-        font-size: 12px;
-        padding: 10px 0;
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-    }
+		#next-button,
+		#auto-bot-button {
+		 position: absolute;
+		 bottom: 20px;
+		 padding: 20px 40px;
+		 font-size: 18px;
+		 background-color: #190096;
+		 color: #e5e5e5;
+		 border: none;
+		 border-radius: 10px;
+		 cursor: pointer;
+		 z-index: 999;
+		 background-image: linear-gradient(45deg, #E90207, #FF8C00); 
+		}
+
+		#next-button:hover,
+		#auto-bot-button:hover {
+		 background-image: linear-gradient(45deg, #243aff 0%, 
+		#4687f0 46%, 
+		#5800d4 100%);   
+		}
+
+		#next-button {
+		 right: calc(50% - 160px);
+		}
+
+		#auto-bot-button {
+		 left: calc(50% - 160px);
+		}
+
+		#title {
+		 position: absolute;
+		 top: 20px;
+		 left: 50%;
+		 transform: translateX(-50%);
+		 z-index: 999;
+		 font-size: 24px;
+		 color: #fff;
+		 animation: changeColor 5s infinite;
+		}
+
+		 @keyframes changeColor {
+				0% {
+						color: black;
+				}
+				16.66% {
+						color: white;
+				}
+				33.33% {
+						color: white;
+				}
+				50% {
+						color: black;
+				}
+				66.66% {
+						color: blue;
+				}
+				83.33% {
+						color: white;
+				}
+				100% {
+						color: black;
+				}
+		 }
+
  </style>
 </head>
 <body>
 
-    <div id="video-container">
-        <div id="title">Random-Shoti</div>
-        <video id="video" controls autoplay></video>
-        <button id="next-button">Next Video</button>
-        <button id="fb-button" onclick="window.open('https://www.facebook.com/kyledev03', '_blank')">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="20" height="20">
-            Facebook
-        </button>
-    </div>
+		<div id="video-container">
+				<video id="video" controls autoplay></video>
+		</div>
 
-    <footer>
-        &copy; 2024 | Kyle_Bait-it | All rights reserved.
-    </footer>
+		<button id="next-button">𝗡𝗘𝗫𝗧 𝗩𝗜𝗗𝗘𝗢 (◍•ᴗ•◍)</button>
+		<button id="auto-bot-button" onclick="window.open('https://www.facebook.com/kyledev03', '_blank')">𝗙𝗕</button>
 
-    <script>
-        async function getRandomVideo() {
-            try {
-                const url = 'https://shoti-srv1.onrender.com/api/v1/get';
-                const rawResponse = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ apikey: "$shoti-1hg4gifgnlfdmeslom8" })
-                });
-                const content = await rawResponse.json();
-                document.getElementById('video').src = content.data.url;
-            } catch (e) {
-                console.error("Error fetching Shoti video", e);
-            }
-        }
+		<script>
+				async function getRandomVideo() {
+						try {
+								const url = 'https://shoti-srv1.onrender.com/api/v1/get';
+								const rawResponse = await fetch(url, {
+										method: 'POST',
+										headers: {
+												'Content-Type': 'application/json'
+										},
+										body: JSON.stringify({ apikey: "$shoti-1hg4gifgnlfdmeslom8" })
+								});
+								const content = await rawResponse.json();
+								document.getElementById('video').src = content.data.url;
+						} catch (e) {
+								console.error("Error fetching Shoti video", e);
+						}
+				}
 
-        getRandomVideo();
+				getRandomVideo();
 
-        document.getElementById('next-button').addEventListener('click', () => {
-            getRandomVideo();
-        });
-    </script>
+				document.getElementById('next-button').addEventListener('click', () => {
+						getRandomVideo();
+				});
+		</script>
 </body>
 </html>
