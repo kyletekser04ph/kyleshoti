@@ -156,29 +156,33 @@
 		<button id="next-button">𝗡𝗘𝗫𝗧 𝗩𝗜𝗗𝗘𝗢 (◍•ᴗ•◍)</button>
 		<button id="auto-bot-button" onclick="window.open('https://www.facebook.com/kyledev03', '_blank')">𝗙𝗕</button>
 
-		<script>
-				async function getRandomVideo() {
-						try {
-								const url = 'https://shoti-srv1.onrender.com/api/v1/get';
-								const rawResponse = await fetch(url, {
-										method: 'POST',
-										headers: {
-												'Content-Type': 'application/json'
-										},
-										body: JSON.stringify({ apikey: "$shoti-1hg4gifgnlfdmeslom8" })
-								});
-								const content = await rawResponse.json();
-								document.getElementById('video').src = content.data.url;
-						} catch (e) {
-								console.error("Error fetching Shoti video", e);
-						}
-				}
+		    <footer>
+        &copy; 2024 | Kylepogi | All rights reserved.
+    </footer>
 
-				getRandomVideo();
+    <script>
+        async function getRandomVideo() {
+            try {
+                const url = 'https://shoti-srv1.onrender.com/api/v1/get';
+                const rawResponse = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ apikey: "$shoti-1hg4gifgnlfdmeslom8" })
+                });
+                const content = await rawResponse.json();
+                document.getElementById('video').src = content.data.url;
+            } catch (e) {
+                console.error("Error fetching Shoti video", e);
+            }
+        }
 
-				document.getElementById('next-button').addEventListener('click', () => {
-						getRandomVideo();
-				});
-		</script>
+        getRandomVideo();
+
+        document.getElementById('next-button').addEventListener('click', () => {
+            getRandomVideo();
+        });
+    </script>
 </body>
 </html>
