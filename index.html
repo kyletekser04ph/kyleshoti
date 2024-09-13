@@ -1,147 +1,317 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random-Shoti</title>
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-image: url("https://i.imgur.com/2R6iXQB.gif");
-            background-size: cover;
-        }
-
-        #video-container {
-            width: 75%;
-            height: 80vh;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            margin-top: 40px;
-            position: relative;
-        }
-
-        #video {
-            width: 100%;
-            height: 60%;
-            border-radius: 10px;
-            object-fit: cover;
-            border: 3px solid #fff;
-            margin-bottom: 20px;
-        }
-
-        #next-button, #fb-button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007ACC;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin: 10px;
-            width: 140px;
-            text-align: center;
-        }
-
-        #next-button:hover, #fb-button:hover {
-            background-color: #005999;
-        }
-
-        #title {
-            font-size: 24px;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
-        #fb-button img {
-            margin-right: 8px;
-        }
-
-        footer {
-            text-align: center;
-            color: #fff;
-            font-size: 12px;
-            padding: 10px 0;
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-        }
-
-        @keyframes changeColor {
-            0% {
-                color: red;
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shoti Videos From TikTok made by Kyle</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
             }
-            16.66% {
-                color: orange;
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
+                color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                padding: 20px;
             }
-            33.33% {
-                color: yellow;
+            .container {
+                background-color: rgba(0, 0, 0, 0.7);
+                border-radius: 20px;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                max-width: 400px;
+                width: 100%;
+                position: relative;
+                overflow: hidden;
             }
-            50% {
-                color: green;
+            h1 {
+                text-align: center;
+                margin-bottom: 20px;
+                font-size: 32px;
+                font-weight: 700;
+                letter-spacing: 2px;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
             }
-            66.66% {
-                color: blue;
+            .video-container {
+                position: relative;
+                width: 100%;
+                padding-bottom: 150%;
+                overflow: hidden;
+                border-radius: 15px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             }
-            83.33% {
-                color: indigo;
+            video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
-            100% {
-                color: violet;
+            .info-bar {
+                background-color: rgba(255, 255, 255, 0.1);
+                padding: 15px;
+                margin-top: 20px;
+                border-radius: 10px;
+                font-size: 14px;
+                backdrop-filter: blur(5px);
             }
-        }
-    </style>
-</head>
-<body>
+            .info-item {
+                margin: 5px 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .controls {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+            }
+            .btn {
+                background-color: rgba(255, 255, 255, 0.1);
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 50px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                font-size: 16px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                flex: 1;
+                margin: 0 5px;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            }
+            .btn::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    120deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent
+                );
+                transition: all 0.5s;
+            }
+            .btn:hover::before {
+                left: 100%;
+            }
+            .btn:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            }
+            .credit {
+                text-align: center;
+                margin-top: 30px;
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 1px;
+                opacity: 0.8;
+            }
+            .copyright {
+                text-align: center;
+                margin-top: 10px;
+                font-size: 12px;
+                opacity: 0.6;
+            }
+            .visitor-counter {
+                margin-top: 15px;
+                text-align: center;
+                font-size: 16px;
+                font-weight: 600;
+                background-color: rgba(255, 255, 255, 0.1);
+                padding: 10px;
+                border-radius: 50px;
+                backdrop-filter: blur(5px);
+            }
+            .menu-toggle {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+                z-index: 1000;
+                width: 30px;
+                height: 25px;
+            }
+            .menu-toggle span {
+                display: block;
+                width: 100%;
+                height: 3px;
+                background-color: white;
+                position: absolute;
+                transition: all 0.3s ease;
+            }
+            .menu-toggle span:nth-child(1) {
+                top: 0;
+            }
+            .menu-toggle span:nth-child(2) {
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .menu-toggle span:nth-child(3) {
+                bottom: 0;
+            }
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg);
+                top: 50%;
+            }
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg);
+                bottom: 50%;
+            }
+            .menu {
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: rgba(0, 0, 0, 0.7);
+                border-radius: 10px;
+                padding: 10px;
+                display: none;
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+                width: 150px;
+            }
+            .menu.active {
+                display: block;
+                opacity: 1;
+                transform: translateY(0);
+            }
+            .menu a {
+                display: block;
+                color: white;
+                text-decoration: none;
+                padding: 10px;
+                margin: 5px 0;
+                border-radius: 5px;
+                transition: background-color 0.3s ease;
+            }
+            .menu a:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Random Shoti From Tiktok</h1>
+            <div class="video-container">
+                <video id="videoPlayer" controls></video>
+            </div>
+            <div class="info-bar">
+                <div id="titleInfo" class="info-item"></div>
+                <div id="userInfo" class="info-item"></div>
+            </div>
+            <div class="controls">
+                <button id="nextButton" class="btn">Next</button>
+                <button id="autoplayToggle" class="btn">Auto: Off</button>
+            </div>
+            <div class="credit">𝗠𝗮𝗱𝗲 𝗯𝘆 𝗞𝘆𝗹𝗲𝗽𝗼𝗴𝗶</div>
+            <div class="copyright">&copy; 2024 All Rights Reserved</div>
+            <div class="visitor-counter">
+                Visitors: <span id="visitorCount">0</span>
+            </div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="menu" id="menu">
+                <a href="video.html">Video</a>
+                <a href="contact.html">project</a>
+                <a href="https://www.facebook.com/kyledev03" target="_blank">Contact</a>
+            </div>
+        </div>
 
-<div id="video-container">
-    <div id="title">Random-Shoti</div>
-    <video id="video" controls autoplay></video>
-    <button id="next-button">Next Video</button>
-    <button id="fb-button" onclick="window.open('https://www.facebook.com/kyledev03', '_blank')">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" width="20" height="20">
-        Facebook
-    </button>
-</div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+        <script>
+            const videoPlayer = document.getElementById('videoPlayer');
+            const titleInfo = document.getElementById('titleInfo');
+            const userInfo = document.getElementById('userInfo');
+            const nextButton = document.getElementById('nextButton');
+            const autoplayToggle = document.getElementById('autoplayToggle');
+            const visitorCountElement = document.getElementById('visitorCount');
 
-<footer>
-    &copy; 2024 | Kylepogi | All rights reserved.
-</footer>
+            let isFirstVideo = true;
+            let autoplayEnabled = false;
 
-<script>
-    async function getRandomVideo() {
-        try {
-            const url = 'https://shoti-srv1.onrender.com/api/v1/get';
-            const rawResponse = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ apikey: "$shoti-1hg4gifgnlfdmeslom8" })
+            async function fetchAndPlayVideo() {
+                try {
+                    const response = await axios.get('/api/video');
+                    const data = response.data;
+
+                    if (data.code === 200 && data.message === "success") {
+                        const videoInfo = data.data;
+                        const { url, title, user } = videoInfo;
+                        const { username, nickname } = user;
+
+                        videoPlayer.src = url;
+                        if (isFirstVideo || autoplayEnabled) {
+                            videoPlayer.play();
+                            isFirstVideo = false;
+                        }
+
+                        titleInfo.textContent = `Title: ${title}`;
+                        userInfo.textContent = `User: ${nickname} (@${username})`;
+                    } else {
+                        titleInfo.textContent = "Error: " + data.message;
+                        userInfo.textContent = "";
+                    }
+                } catch (error) {
+                    console.error('Error fetching video:', error);
+                    titleInfo.textContent = "Error fetching video: " + error.message;
+                    userInfo.textContent = "";
+                }
+            }
+
+            // Initial video load
+            fetchAndPlayVideo();
+
+            // Next button click event
+            nextButton.addEventListener('click', fetchAndPlayVideo);
+
+            // Autoplay toggle
+            autoplayToggle.addEventListener('click', () => {
+                autoplayEnabled = !autoplayEnabled;
+                autoplayToggle.textContent = `Auto: ${autoplayEnabled ? 'On' : 'Off'}`;
             });
-            const content = await rawResponse.json();
-            document.getElementById('video').src = content.data.url;
-        } catch (e) {
-            console.error("Error fetching Shoti video", e);
-        }
-    }
 
-    getRandomVideo();
+            // Auto-play next video when current video ends if autoplay is enabled
+            videoPlayer.addEventListener('ended', () => {
+                if (autoplayEnabled) {
+                    fetchAndPlayVideo();
+                }
+            });
 
-    document.getElementById('next-button').addEventListener('click', getRandomVideo);
-</script>
+            // Visitor count logic
+            let visitorCount = localStorage.getItem('visitorCount') || 0;
+            visitorCount++;
+            localStorage.setItem('visitorCount', visitorCount);
+            visitorCountElement.textContent = visitorCount;
 
-</body>
-</html>
+            // Menu toggle function
+            function toggleMenu() {
+                const menuToggle = document.querySelector('.menu-toggle');
+                const menu = document.getElementById('menu');
+                menuToggle.classList.toggle('active');
+                menu.classList.toggle('active');
+            }
+        </script>
+    </body>
+        </html>
