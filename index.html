@@ -253,7 +253,7 @@
 
             async function fetchAndPlayVideo() {
                 try {
-                    const response = await axios.get('/api/video');
+                    const response = await axios.get('https://shoti-srv2.onlitegix.com/api/v1/request-f');
                     const data = response.data;
 
                     if (data.code === 200 && data.message === "success") {
